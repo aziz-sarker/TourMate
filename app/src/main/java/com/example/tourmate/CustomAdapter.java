@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tourmate.ConvertWeather.ConvertWeather;
 import com.example.tourmate.Weather.Weather;
 import com.example.tourmate.Weather.WeatherMainPojoClass;
 
@@ -42,7 +43,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
 
 
-
+        viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertUnixToDate(weatherMainPojoClass.getDt())));
         viewHolder.minTemp.setText(String.valueOf(weatherMainPojoClass.getMain().getTempMin())+"°C");
         viewHolder.maxTemp.setText(String.valueOf(weatherMainPojoClass.getMain().getTempMax())+"°C");
 
@@ -54,11 +55,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView minTemp,maxTemp;
+        private TextView minTemp,maxTemp,dateDT;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             minTemp = itemView.findViewById(R.id.minTemp);
             maxTemp = itemView.findViewById(R.id.maxTemp);
+            dateDT = itemView.findViewById(R.id.dateDT);
         }
     }
 }

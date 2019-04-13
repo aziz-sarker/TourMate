@@ -14,6 +14,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void goToDashBoard(View view) {
-        startActivity(new Intent(SignUp.this,DashBoard.class));
+          startActivity(new Intent(SignUp.this,DashBoard.class));
+        //startActivity(new Intent(SignUp.this,Nearby.class));
     }
 }
