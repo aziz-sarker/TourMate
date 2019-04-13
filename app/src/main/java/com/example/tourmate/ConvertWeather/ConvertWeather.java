@@ -12,7 +12,7 @@ public class ConvertWeather {
     public static String convertUnixToDate (long wDate){
 
         Date date = new Date(wDate*1000L);
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm EEE dd MM yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm EEE");
         String format = sdf.format(date);
         return format;
     }

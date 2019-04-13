@@ -22,7 +22,7 @@ import retrofit2.Response;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     private Context context;
-    private List<com.example.tourmate.Weather.List>list;
+    private List<com.example.tourmate.Weather.List> list;
 
     public CustomAdapter(Context context, List<com.example.tourmate.Weather.List> list) {
         this.context = context;
@@ -32,7 +32,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_layout,viewGroup,false);
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_layout, viewGroup, false);
         return new ViewHolder(itemView);
     }
 
@@ -43,9 +43,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
 
 
+
+
         viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertUnixToDate(weatherMainPojoClass.getDt())));
-        viewHolder.minTemp.setText(String.valueOf(weatherMainPojoClass.getMain().getTempMin())+"°C");
-        viewHolder.maxTemp.setText(String.valueOf(weatherMainPojoClass.getMain().getTempMax())+"°C");
+        viewHolder.minTemp.setText(String.valueOf(weatherMainPojoClass.getMain().getTempMin()) + "°C");
+        viewHolder.maxTemp.setText(String.valueOf(weatherMainPojoClass.getMain().getTempMax()) + "°C");
+
+
+
 
     }
 
@@ -55,7 +60,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView minTemp,maxTemp,dateDT;
+        private TextView minTemp, maxTemp, dateDT;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 

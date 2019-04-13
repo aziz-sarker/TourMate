@@ -83,12 +83,13 @@ public class DashBoard extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+            home();
         } else if (id == R.id.nav_trip) {
 
         } else if (id == R.id.nav_weather) {
 
         } else if (id == R.id.nav_nearby) {
+            nearBy();
 
         } else if (id == R.id.nav_contact) {
 
@@ -101,7 +102,16 @@ public class DashBoard extends AppCompatActivity
         return true;
     }
 
+    private void nearBy() {
+        startActivity(new Intent(DashBoard.this,Nearby.class));
+    }
+
+    private void home() {
+        startActivity(new Intent(DashBoard.this,DashBoard.class));
+    }
+
     public void goToWeather(View view) {
        startActivity(new Intent(DashBoard.this,WeatherInfo.class));
+       //startActivity(new Intent(DashBoard.this,Nearby.class));
     }
 }

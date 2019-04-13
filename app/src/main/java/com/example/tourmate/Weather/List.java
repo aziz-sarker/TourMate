@@ -8,7 +8,7 @@ public class List {
 
     @SerializedName("dt")
     @Expose
-    private Integer dt;
+    private long dt;
     @SerializedName("main")
     @Expose
     private Main main;
@@ -31,7 +31,7 @@ public class List {
     @Expose
     private Rain rain;
 
-    public Integer getDt() {
+    public long getDt() {
         return dt;
     }
 

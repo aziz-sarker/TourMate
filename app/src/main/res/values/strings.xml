@@ -10,4 +10,5 @@
     <string name="action_settings">Settings</string>
     <string name="weather_api_key">caba92b53d8c2a02f330775bebbdabc8</string>
     <string name="title_activity_nearby">Map</string>
+    <string name="nearby_api_key">AIzaSyDwTRVd3Z1-ZEP3fy2nW2bC5wOU3aTgS7U</string>
 </resources>
