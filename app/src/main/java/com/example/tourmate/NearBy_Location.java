@@ -42,6 +42,9 @@ public class NearBy_Location extends AppCompatActivity {
 
                    list = new ArrayList();
                    list = nearbyLocation.getResults();
+                   for (int i = 0; i < list.size(); i++){
+                       nearbyLocation.getResults().get(i).getGeometry().getLocation().getLat();
+                   }
                }
 
            }

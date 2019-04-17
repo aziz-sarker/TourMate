@@ -31,6 +31,19 @@ public class List {
     @Expose
     private Rain rain;
 
+    private long dayOfWeek;
+    private double minTemp;
+    private double maxTemp;
+
+
+
+    public List(long dayOfWeek, double minTemp, double maxTemp) {
+        this.dayOfWeek = dayOfWeek;
+        this.minTemp = minTemp;
+        this.maxTemp = maxTemp;
+    }
+
+
     public long getDt() {
         return dt;
     }
@@ -93,6 +106,18 @@ public class List {
 
     public void setRain(Rain rain) {
         this.rain = rain;
+    }
+
+    public long getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public double getMinTemp() {
+        return minTemp;
+    }
+
+    public double getMaxTemp() {
+        return maxTemp;
     }
 
 }
