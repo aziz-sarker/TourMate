@@ -1,104 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".FiveDaysWeather"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".FiveDaysWeather"
         android:orientation="vertical">
-        
-        <TextView
-            android:layout_marginTop="35dp"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            android:text="37°"
-            android:textSize="75sp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:background="@drawable/circle_view"/>
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dhaka,Bangladesh"
-            android:textSize="25sp"
-            android:textAlignment="center"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Wed, 17 April"
-            android:textSize="21sp"/>
+
+    <TextView
+        android:id="@+id/currentTempTV"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/circle_view"
+        android:gravity="center"
+        android:text="37°"
+        android:textAlignment="center"
+        android:textSize="75sp" />
+
+    <TextView
+        android:id="@+id/weatherTypeTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wed, 17 April"
+        android:textAlignment="center"
+        android:textSize="23sp" />
+
+    <TextView
+        android:id="@+id/cityNameTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Dhaka,Bangladesh"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
 
         <LinearLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-            <LinearLayout
-                android:layout_weight="1"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Wind"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Wind"
-                    android:textStyle="bold"
-                    android:textSize="28sp"
-                    android:textAlignment="center"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="4.75 km/h"
-                    android:textSize="20sp"
-                    android:textAlignment="center"/>
 
-            </LinearLayout>
             <LinearLayout
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/windTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="2"
+                    android:gravity="right"
+                    android:text="4.75"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Humidity"
-                    android:textStyle="bold"
-                    android:textSize="28sp"
-                    android:textAlignment="center"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="65%"
-                    android:textSize="20sp"
-                    android:textAlignment="center"/>
+                    android:layout_weight="2"
+                    android:text="km/h"
+                    android:textSize="20sp" />
+
 
             </LinearLayout>
+
+
         </LinearLayout>
 
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="10dp"
-            android:id="@+id/recyclerViewRV"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        </android.support.v7.widget.RecyclerView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Humidity"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/errorTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="8">
+
+                <TextView
+                    android:id="@+id/humidityTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="right"
+                    android:text="65"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="4"
+                    android:text="%"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
-</layout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewRV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/errorTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>

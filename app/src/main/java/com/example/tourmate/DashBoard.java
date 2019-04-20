@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.tourmate.NearbyLocation.NearbyLocation;
+
 
 public class DashBoard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -104,6 +106,7 @@ public class DashBoard extends AppCompatActivity
 
     private void nearBy() {
         startActivity(new Intent(DashBoard.this,Nearby.class));
+        //startActivity(new Intent(DashBoard.this, NearBy_Location.class));
     }
 
     private void home() {
@@ -111,7 +114,7 @@ public class DashBoard extends AppCompatActivity
     }
 
     public void goToWeather(View view) {
-       startActivity(new Intent(DashBoard.this,WeatherInfo.class));
+       startActivity(new Intent(DashBoard.this,FiveDaysWeather.class));
        //startActivity(new Intent(DashBoard.this,Nearby.class));
     }
 }

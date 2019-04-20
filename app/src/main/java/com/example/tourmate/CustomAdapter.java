@@ -25,7 +25,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     private Context context;
     private List<com.example.tourmate.Weather.List> list;
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:SSSS", Locale.getDefault());
+
 
     public CustomAdapter(Context context, List<com.example.tourmate.Weather.List> list) {
         this.context = context;
@@ -42,65 +42,53 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
-        com.example.tourmate.Weather.List weatherMainPojoClass = list.get(i);
+       com.example.tourmate.Weather.List weatherMainPojoClass = list.get(i);
 
         /*int[] everyday = new int[]{0,0,0,0,0,0,0};
 
-        for (int count=0; count<list.size();count++){
-            long time = list.get(i).getDt();
-            double tempMin = list.get(i).getMain().getTempMin();
-            double tempMax = list.get(i).getMain().getTempMax();
-            if (String.valueOf(ConvertWeather.convertDateToDayMonth(time)).equals("Sat") && everyday[0] < 1){
-                viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertDateToDayMonth(time)));
-                viewHolder.minTemp.setText(String.valueOf(tempMin)+ "°C");
-                viewHolder.maxTemp.setText(String.valueOf(tempMax)+ "°C");
+        for (int k=0; k<list.size();k++){
+
+            date = list.get(k).getDt();
+            wTempMin = list.get(k).getMain().getTempMin();
+            wTempMax = list.get(k).getMain().getTempMax();
+
+            if (String.valueOf(ConvertWeather.convertUnixToDate(date)).equals("Sat") && everyday[0] < 1){
+
+                viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertUnixToDate(list.get(i).getDt())));
+                viewHolder.minTemp.setText(String.valueOf(list.get(i).getMain().getTempMin())+"°C");
+                viewHolder.maxTemp.setText(String.valueOf(list.get(i).getMain().getTempMax())+"°C");
+
                 everyday[0] = 1;
-            }if (String.valueOf(ConvertWeather.convertDateToDayMonth(time)).equals("Sun") && everyday[1] < 1){
-                viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertDateToDayMonth(time)));
-                viewHolder.minTemp.setText(String.valueOf(tempMin)+ "°C");
-                viewHolder.maxTemp.setText(String.valueOf(tempMax)+ "°C");
+            }if (String.valueOf(ConvertWeather.convertUnixToDate(date)).equals("Sun") && everyday[1] < 1){
+
                 everyday[1] = 1;
 
-            } if (String.valueOf(ConvertWeather.convertDateToDayMonth(time)).equals("Mon") *//*&& everyday[2] < 1*//*){
-                viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertDateToDayMonth(time).equals("Mon")));
-                viewHolder.minTemp.setText(String.valueOf(tempMin)+ "°C");
-                viewHolder.maxTemp.setText(String.valueOf(tempMax)+ "°C");
+            } if (String.valueOf(ConvertWeather.convertUnixToDate(date)).equals("Mon") && everyday[2] < 1){
+
                 everyday[2] = 1;
 
-            } if (String.valueOf(ConvertWeather.convertDateToDayMonth(time)).equals("Tue") && everyday[3] < 1){
-                viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertDateToDayMonth(time).equals("Tue")));
-                viewHolder.minTemp.setText(String.valueOf(tempMin)+ "°C");
-                viewHolder.maxTemp.setText(String.valueOf(tempMax)+ "°C");
+            } if (String.valueOf(ConvertWeather.convertUnixToDate(date)).equals("Tue") && everyday[3] < 1){
+
                 everyday[3] = 1;
 
-            } if (String.valueOf(ConvertWeather.convertDateToDayMonth(time)).equals("Wed") && everyday[4] < 1){
-                viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertDateToDayMonth(time).equals("Wed")));
-                viewHolder.minTemp.setText(String.valueOf(tempMin)+ "°C");
-                viewHolder.maxTemp.setText(String.valueOf(tempMax)+ "°C");
+            } if (String.valueOf(ConvertWeather.convertUnixToDate(date)).equals("Wed") && everyday[4] < 1){
+
                 everyday[4] = 1;
 
-            }if (String.valueOf(ConvertWeather.convertDateToDayMonth(time)).equals("Thu") && everyday[5] < 1){
-                viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertDateToDayMonth(time).equals("Thu")));
-                viewHolder.minTemp.setText(String.valueOf(tempMin)+ "°C");
-                viewHolder.maxTemp.setText(String.valueOf(tempMax)+ "°C");
+            }if (String.valueOf(ConvertWeather.convertUnixToDate(date)).equals("Thu") && everyday[5] < 1){
+
                 everyday[5] = 1;
 
-            } if (String.valueOf(ConvertWeather.convertDateToDayMonth(time)).equals("Fri") && everyday[6] < 1){
-                viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertDateToDayMonth(time).equals("Fri")));
-                viewHolder.minTemp.setText(String.valueOf(tempMin)+ "°C");
-                viewHolder.maxTemp.setText(String.valueOf(tempMax)+ "°C");
+            } if (String.valueOf(ConvertWeather.convertUnixToDate(date)).equals("Fri") && everyday[6] < 1){
+
                 everyday[6] = 1;
 
             }
         }*/
 
-
-        viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertUnixToDate(list.get(i).getDayOfWeek())));
-        viewHolder.minTemp.setText(String.valueOf(list.get(i).getMinTemp())+"°C");
-        viewHolder.maxTemp.setText(String.valueOf(list.get(i).getMaxTemp())+"°C");
-
-
-
+        viewHolder.dateDT.setText(String.valueOf(ConvertWeather.convertUnixToDate(list.get(i).getDt())));
+        viewHolder.minTemp.setText(String.valueOf(list.get(i).getMain().getTempMin())+"°C");
+        viewHolder.maxTemp.setText(String.valueOf(list.get(i).getMain().getTempMax())+"°C");
 
     }
 

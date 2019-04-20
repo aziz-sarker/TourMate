@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
+import com.example.tourmate.NearbyLocation.NearbyLocation;
 import com.example.tourmate.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -29,7 +30,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Nearby extends FragmentActivity implements OnMapReadyCallback {
 
@@ -39,6 +45,9 @@ public class Nearby extends FragmentActivity implements OnMapReadyCallback {
     FragmentManager fragmentManager;
     AutoCompleteTextView autoCompleteTextView;
     FusedLocationProviderClient fusedLocationProviderClient;
+    private NearbyLocation nearbyLocation;
+    private List list;
+    private double lat,lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,7 @@ public class Nearby extends FragmentActivity implements OnMapReadyCallback {
         geocoder = new Geocoder(this);
 
         getLocationPermission();
+
 
     }
 
@@ -120,11 +130,49 @@ public class Nearby extends FragmentActivity implements OnMapReadyCallback {
             public void onComplete(@NonNull Task<Location> task) {
                 if (task.isSuccessful()){
                     Location location = task.getResult();
-                    LatLng testLocation = new LatLng(location.getLatitude(),location.getLongitude());
+                    lat = location.getLatitude();
+                    lng = location.getLongitude();
+                    getNearbyLocationData(lat,lng);
+                    LatLng testLocation = new LatLng(lat,lng);
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(testLocation,14));
 
                 }
             }
         });
+    }
+
+    private void getNearbyLocationData(double nLat,double nLng) {
+
+        Location_Interface location_interface = RetrofitClass.getRetrofitLocationInstance().create(Location_Interface.class);
+        String url = String.format("json?location=%f,%f&radius=1500&type=bank&key=AIzaSyAGKJfnsFM5lV-LP0KTw5RhjlRbNqwi2Pc",nLat,nLng);
+        final Call<NearbyLocation> nearbyLocationCall = location_interface.getLocationData(url);
+
+        nearbyLocationCall.enqueue(new Callback<NearbyLocation>() {
+            @Override
+            public void onResponse(Call<NearbyLocation> call, Response<NearbyLocation> response) {
+
+                if (response.code() ==200){
+                    nearbyLocation =response.body();
+
+                    list = new ArrayList();
+                    list = nearbyLocation.getResults();
+                    for (int i = 0; i < list.size(); i++){
+                        double nearbyLat = nearbyLocation.getResults().get(i).getGeometry().getLocation().getLat();
+                        double nearbyLng = nearbyLocation.getResults().get(i).getGeometry().getLocation().getLng();
+                        LatLng nearbyLocation = new LatLng(nearbyLat,nearbyLng);
+                        mMap.addMarker(new MarkerOptions().position(nearbyLocation));
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<NearbyLocation> call, Throwable t) {
+
+                Toast.makeText(Nearby.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 }
